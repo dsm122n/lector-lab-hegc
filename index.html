@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/csv-parser@3.0.0/index.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf2json/2.3.0/pdf2json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+
+    <script src="index.js"></script>
+    <title>lector</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <nav class="navbar-dark">
+            
+            <ul class="nav nav-tabs navbar-dark bg-dark">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#primera">Primera Pag</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#segunda">Segunda Pag</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container active" id="primera">
+                Primera página
+                <button id="boton" onclick="extractTextFromPDF('(1).pdf')">
+                    leer pdf
+                </button>
+            </div>
+            <div class="tab-pane container" id="segunda">
+                Segunda página
+                <button id="boton_csv" onclick="leerCsv('Book1.csv')">
+
+                    leer .csv
+                </button>
+                <div id="tabla-csv">
+                    <table id="table_html">
+                        <thead>
+                            <tr id="Headings">
+
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo_tabla">
+                            <tr>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="pdfText">holis</div>
+
+    </div>
+    <script>
+    </script>
+</body>
+</html>
