@@ -1,10 +1,17 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions",
+    "name": "lector lab",
     "description": "Base Level Extension",
     "version": "1.0",
+    "background": {
+      "service_worker": "background.js"
+    },
     "action": {
       "default_popup": "index.html",
       "default_icon": "icon-1.png"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self' https://cdn.jsdelivr.net/npm/csv-parser@3.0.0/index.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js https://cdnjs.cloudflare.com/ajax/libs/pdf2json/2.3.0/pdf2json.min.js https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js; object-src 'self';"
     }
-}
+  }
+  

@@ -74,8 +74,19 @@ const nombresExamenes = ["HEMOGLOBINA", "HEMATOCRITO", "V.C.M", "C.H.C.M", "PLAQ
 let tablaConResultados = [];
 let extractedText = "";
 
+
+
 function extractTextFromPDF(pdfUrl) {
+    
     // Asynchronously load the PDF file
+      
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const currentTab = tabs[0];
+        const currentTabUrl = currentTab.url;
+        document.getElementById("url").textContent = currentTabUrl;
+        console.log("Current tab URL:", currentTabUrl);
+      });
+
     const loadingTask = pdfjsLib.getDocument(pdfUrl);
     
     loadingTask.promise.then(function (pdf) {
