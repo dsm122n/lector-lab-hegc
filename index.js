@@ -75,18 +75,18 @@ let tablaConResultados = [];
 let extractedText = "";
 
 
+// https://api.en.hegc.cl/dms/files/7214483?forceDownload=false&pretty-file-name=EXAMEN%20LABORATORIO  
 
-function extractTextFromPDF(pdfUrl) {
+function extractTextFromPDF() {
+
+
     
     // Asynchronously load the PDF file
-      
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const currentTab = tabs[0];
-        const currentTabUrl = currentTab.url;
-        document.getElementById("url").textContent = currentTabUrl;
-        console.log("Current tab URL:", currentTabUrl);
-      });
+    const pdfUrl = document.getElementById("pdfUrl").value;
+    console.log(typeof(pdfUrl));
+    console.log(pdfUrl);
 
+    // const loadingTask = pdfjsLib.getDocument(pdfUrl);
     const loadingTask = pdfjsLib.getDocument(pdfUrl);
     
     loadingTask.promise.then(function (pdf) {
@@ -108,10 +108,11 @@ function extractTextFromPDF(pdfUrl) {
             
             // Join the text content from this page into a single string
             // const pageTextString = pageText.join(" ");
-  
+            console.log("el array de textos es: \n");
+            console.log(textArray);
             // Add the text from this page to the array
             //textArray.push(pageTextString);
-  
+            
             // If this is the last page, display the extracted text
             if (pageNum === pdf.numPages) {
               //const extractedText = textArray.join("\n");
@@ -134,12 +135,16 @@ function extractTextFromPDF(pdfUrl) {
                 // Set the time components to the Date object
                 dateObject.setHours(parseInt(hours, 10), parseInt(minutes, 10));
                 labDia.fecha = dateObject;
-              
+
+                console.log("largo de:" + textArray[0][1].length);
 
                 for (let i = 0; i < textArray.length; i++) {
-                    console.log(textArray[i]);
-                    for (let j = 0; j < nombresExamenes.length; j++) {
-                        for (let k = 0; k < textArray[i].length; k++) {
+
+                    for (let k = 0; k < textArray[i].length; k++) {
+                        for (let j = 0; j < nombresExamenes.length; j++) {
+                            console.log(textArray[1][k]);
+                            // console.log("i es " + i + ", k es " + k + " y j es " + j);
+                            ////////////// aquí añadir el /\s asterisco antes del /
                             const elementWithoutSpaces = textArray[i][k].replace(/\s*/, '');
                 
                 
